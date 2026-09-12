@@ -3,29 +3,115 @@
 <head>
   <title>Flowgenix AI</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0a0a0a;
+      color: white;
+    }
+
+    input {
+      width: 90%;
+      padding: 12px;
+      margin: 5px;
+      border-radius: 8px;
+      border: none;
+      background: #1a1a1a;
+      color: white;
+    }
+
+    button {
+      padding: 12px 20px;
+      margin: 8px;
+      border: none;
+      border-radius: 8px;
+      background: #00ffcc;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #00ccaa;
+    }
+
+    .card {
+      background: #121212;
+      padding: 20px;
+      margin: 15px 0;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,255,200,0.1);
+    }
+
+    .warning {
+      color: #ff4d4d;
+      font-size: 13px;
+    }
+
+    .subtext {
+      color: #aaa;
+      font-size: 12px;
+    }
+  </style>
 </head>
 
-<body style="background:#0a0a0a; color:white; font-family:sans-serif; text-align:center; padding:20px;">
+<body>
 
-<h1>🚀 Flowgenix AI</h1>
+<!-- AUTH SECTION -->
+<div id="auth" style="text-align:center; padding:40px;">
+  <h1>🚀 Flowgenix AI</h1>
+  <p style="color:#aaa;">Automation • Invoicing • Scraping</p>
 
-<h3>Connect WhatsApp</h3>
+  <input id="email" placeholder="Email"><br>
+  <input id="password" type="password" placeholder="Password"><br>
 
-<input id="apiKey" placeholder="API Key"><br><br>
-<input id="phoneId" placeholder="Phone ID"><br><br>
+  <button onclick="signup()">Sign Up</button>
+  <button onclick="login()">Login</button>
+</div>
 
-<button onclick="saveWhatsApp()">Save</button>
+<!-- DASHBOARD -->
+<div id="dashboard" style="display:none; padding:20px;">
 
-<hr>
+  <h2>Dashboard</h2>
+  <p id="userEmail"></p>
+  <p id="role"></p>
 
-<h3>Send Message</h3>
+  <!-- WhatsApp -->
+  <div class="card">
+    <h3>💬 WhatsApp Integration</h3>
 
-<input id="number" placeholder="Number (91...)"><br><br>
-<input id="message" placeholder="Message"><br><br>
+    <p class="warning">
+      ⚠️ Works only when you have API from Meta (WhatsApp Cloud API)
+    </p>
 
-<button onclick="sendWhatsApp()">Send</button>
+    <input id="apiKey" placeholder="Enter WhatsApp API Key"><br>
+    <input id="phoneId" placeholder="Enter Phone Number ID"><br>
+
+    <button onclick="saveWhatsApp()">Save WhatsApp</button>
+  </div>
+
+  <!-- Send Message -->
+  <div class="card">
+    <h3>📤 Send Message</h3>
+
+    <p class="subtext">
+      Requires connected WhatsApp API
+    </p>
+
+    <input id="number" placeholder="Enter Number (e.g. 919XXXXXXXXX)"><br>
+    <input id="message" placeholder="Enter Message"><br>
+
+    <button onclick="sendWhatsApp()">Send Message</button>
+  </div>
+
+</div>
 
 <script src="app.js"></script>
 
 </body>
-                                                </html>
+</html>
